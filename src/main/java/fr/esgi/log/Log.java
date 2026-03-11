@@ -3,18 +3,18 @@ package fr.esgi.log;
 
 import java.time.LocalDateTime;
 
-public class Log implements ILog {
+public class Log<T extends Readable> implements ILog {
 
+    private T source;
     private CRITICITY criticity;
-    private String message;
     private LocalDateTime timestamp;
     private Integer status;
 
-    public Log(CRITICITY criticity, String message, LocalDateTime timestamp, Integer status) {
+    public Log(CRITICITY criticity, LocalDateTime timestamp, Integer status, T source) {
         this.criticity = criticity;
-        this.message = message;
         this.timestamp = timestamp;
         this.status = status;
+        this.source = source;
     }
 
     public Log() {
@@ -29,11 +29,7 @@ public class Log implements ILog {
     }
 
     public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
+        return source.getBody();
     }
 
     public LocalDateTime getTimestamp() {
