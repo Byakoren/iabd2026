@@ -3,6 +3,7 @@ package fr.esgi;
 
 import fr.esgi.log.CRITICITY;
 import fr.esgi.log.Log;
+import fr.esgi.log.Request;
 
 import java.util.*;
 
@@ -32,10 +33,6 @@ public class Main {
         logsUniques.add(log);
         logsUniques.add(log2);
         logsUniques.add(log);
-
-
-
-
         Map<CRITICITY, Integer> logByCriticity = new HashMap<>();
 
         // Ajouter 5 logs différents à la liste
@@ -45,5 +42,7 @@ public class Main {
         }
 
         System.out.println(logByCriticity);
+
+        Request<Log> request = new Request<>();
     }
 }
